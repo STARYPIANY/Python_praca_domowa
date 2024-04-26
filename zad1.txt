@@ -1,0 +1,285 @@
+Zadanie 1 
+
+punkt 49
+
+def count_vowels(text):
+    vowels = 'aeiouAEIOU' #samogloski
+    vowel_count = {vowel: 0 for vowel in vowels}
+    for char in text:
+        if char in vowels:
+            vowel_count[char.lower()] += 1
+    return vowel_count
+
+def display_vowel_counts(vowel_count):
+    for vowel, count in vowel_count.items():
+        print(f'{vowel}: {count}')
+
+text = input("Enter some text: ")
+vowel_count = count_vowels(text)
+print("Vowel counts:")
+display_vowel_counts(vowel_count)
+
+
+
+punkt 57
+
+def usun_spacje(text):
+    return text.replace(" ", "")
+
+input_text = input("Enter a string with spaces: ")
+text_without_spaces = usun_spacje(input_text)
+print("String without spaces:", text_without_spaces)
+
+
+punkt 58
+
+def przenies_spacje(text):
+    spaces = [char for char in text if char == ' ']
+    non_spaces = [char for char in text if char != ' ']
+    return ''.join(spaces + non_spaces)
+
+input_text = input("Enter a string: ")
+text_with_spaces_at_front = przenies_spacje(input_text)
+print("String with spaces at front:", text_with_spaces_at_front)
+
+
+punkt 60
+
+def duza_litera(sentence):
+    words = sentence.split()
+    result = []
+    for word in words:
+        if len(word) > 1:
+            modified_word = word[0].upper() + word[1:-1] + word[-1].upper()
+        else:
+            modified_word = word.upper()
+        result.append(modified_word)
+    return ' '.join(result)
+
+input_sentence = input("Enter a sentence: ")
+capitalized_sentence = duza_litera(input_sentence)
+print("Capitalized sentence:", capitalized_sentence)
+
+
+punkt 61
+
+def duplikaty(input_string):
+    unique_chars = []
+    for char in input_string:
+        if char not in unique_chars:
+            unique_chars.append(char)
+    return ''.join(unique_chars)
+
+input_string = input("Enter a string: ")
+result = duplikaty(input_string)
+print("String after removing duplicates:", result)
+
+
+punkt 62
+
+def suma(input_string):
+    total = 0
+    for char in input_string:
+        if char.isdigit():
+            total += int(char)
+    return total
+
+input_string = input("Enter a string: ")
+result = suma(input_string)
+print("Sum of digits in the string:", result)
+
+
+punkt 40
+
+def odwrotnosc(input_string):
+    words = input_string.split()  
+    reversed_words = words[::-1]  
+    return ' '.join(reversed_words)  
+
+input_string = input("Enter a string: ")
+reversed_string = odwrotnosc(input_string)
+print("Reversed string:", reversed_string)
+
+
+punkt 94
+
+def hex_do_RGB(hex_code):
+    hex_code = hex_code.lstrip('#')
+    red = int(hex_code[0:2], 16)
+    green = int(hex_code[2:4], 16)
+    blue = int(hex_code[4:6], 16)
+    
+    return (red, green, blue)
+
+hex_code = input("Enter a hexadecimal color code : ")
+rgb_components =hex_do_RGB(hex_code)
+print("RGB components:", rgb_components)
+
+
+
+punkt 95
+
+def rgb_do_hex(rgb):
+    hex_code = "#{:02x}{:02x}{:02x}".format(rgb[0], rgb[1], rgb[2])
+    return hex_code
+rgb_components = (255, 165, 1)  
+hex_code = rgb_do_hex(rgb_components)
+print("Hexadecimal color code:", hex_code)
+
+
+punkt 96
+
+def camelcase(input_string):
+    words = input_string.split()
+    camel_case_string = words[0].lower() + ''.join(word.capitalize() for word in words[1:])
+    return camel_case_string
+
+input_string = input("Enter a string: ")
+camel_case_string = camelcase(input_string)
+print("CamelCase string:", camel_case_string)
+
+
+punkt 97
+
+def snakecase(input_string):
+    snake_case_string = input_string.replace(' ', '_').lower()
+    return snake_case_string
+
+input_string = input("Enter a string: ")
+snake_case_string = snakecase(input_string)
+print("Snake case string:", snake_case_string)
+
+
+punkt 98
+
+def pomniejszenie(input_string):
+    if len(input_string) > 0:
+        return input_string[0].lower() + input_string[1:]
+    else:
+        return input_string
+
+input_string = input("Enter a string: ")
+decapitalized_string = pomniejszenie(input_string)
+print("Decapitalized string:", decapitalized_string)
+
+
+punkt 99
+
+def podzial_na_linie(multi_line_string):
+    lines = multi_line_string.splitlines()
+    return lines
+
+multi_line_string = """Oryginalny ciag znakow: To
+jest ciąg
+wielowierszowy"""
+lines = podzial_na_linie(multi_line_string)
+print("List of lines:")
+for line in lines:
+    print(line)
+
+
+
+
+punkt 109
+
+def przestepne(year_range):
+    start_year, end_year = map(int, year_range.split('-'))
+    leap_year_count = 0
+    for year in range(start_year, end_year + 1):
+        if (year % 4 == 0 and year % 100 != 0) or (year % 400 == 0):
+            leap_year_count += 1
+    return leap_year_count
+
+
+year_range = input("Enter a range of years: ")
+leap_year_count = przestepne(year_range)
+print("Number of leap years within the range:", leap_year_count)
+
+
+punkt 110
+
+def spacja_duza_litera(word):
+    new_word = ''
+    for char in word:
+        if char.isupper():
+            new_word += ' ' + char
+        else:
+            new_word += char
+    return new_word
+
+word = input("Enter a word: ")
+modified_word = spacja_duza_litera(word)
+print("Modified word:", modified_word)
+
+
+punkt 112
+
+def suma_cyfr(str1, str2):
+    num1 = int(str1)
+    num2 = int(str2)
+    result = num1 + num2
+    return str(result)
+
+str1 = input("Enter the first number as a string: ")
+str2 = input("Enter the second number as a string: ")
+result = suma_cyfr(str1, str2)
+print("Sum of the numbers:", result)
+
+punkt 18
+
+def pierwsze_3(input_string):
+    if len(input_string) < 3:
+        return input_string
+    else:
+        return input_string[:3]
+
+input_str = input("Enter a string: ")
+result = pierwsze_3(input_str)
+print("Result:", result)
+
+
+punkt 8
+
+def dlugosc(words):
+    longest = ''
+    longest_length = 0
+
+    for word in words:
+        if len(word) > longest_length:
+            longest = word
+            longest_length = len(word)
+    return longest, longest_length
+
+word_list = input("Enter a list of words separated by spaces: ").split()
+longest, length = dlugosc(word_list)
+print("Longest word:", longest)
+print("Length of the longest word:", length)
+
+punkt 3
+
+def dwie_litery(input_string):
+    if len(input_string) < 2:
+        return ''
+    else:
+        return input_string[:2] + input_string[-2:]
+
+input_str = input("Enter a string: ")
+result = dwie_litery(input_str)
+print("Result:", result)
+
+
+punkt 2
+
+def licznik(input_string):
+    char_frequency = {}
+
+    for char in input_string:
+        char_frequency[char] = char_frequency.get(char, 0) + 1
+    return char_frequency
+
+input_str = input("Enter a string: ")
+frequency = licznik(input_str)
+print("Character frequency:")
+for char, count in frequency.items():
+    print(f"{char}: {count}")
+

@@ -1,0 +1,302 @@
+Zadanie 2
+
+punkt 17
+
+def is_prime(number):
+    if number <= 1:
+        return False
+    if number <= 3:
+        return True
+    if number % 2 == 0 or number % 3 == 0:
+        return False
+    i = 5
+    while i * i <= number:
+        if number % i == 0 or number % (i + 2) == 0:
+            return False
+        i += 6
+    return True
+
+def all_primes(numbers):
+    for number in numbers:
+        if not is_prime(number):
+            return False
+    return True
+
+numbers = [2, 3, 5, 7, 11, 15, 18, 23]  
+result = all_primes(numbers)
+print("Are all numbers prime?", result)
+
+
+punkt 18
+
+from itertools import permutations
+
+def generate_permutations(input_list):
+    return list(permutations(input_list))
+
+input_list = [1, 2, 3]
+permutations_list = generate_permutations(input_list)
+print("Permutations:")
+for perm in permutations_list:
+    print(perm)
+
+
+punkt 19
+
+def list_difference(list1, list2):
+    return list(set(list1) - set(list2))
+
+list1 = [1, 2, 3, 4, 5]
+list2 = [1, 2, 3, 5, 8]
+difference = list_difference(list1, list2)
+print("Difference between lists:", difference)
+
+
+punkt 21
+
+def listaS(characters):
+    return ''.join(characters)
+
+char_list = ['W', 'i', 't', 'a', 'm']
+string_result = listaS(char_list)
+print("String:", string_result)
+
+
+punkt 24
+
+def laczenie_list(list1, list2):
+    list1.extend(list2)
+    return list1
+
+list1 = [1, 2, 3]
+list2 = [4, 5, 6]
+result = laczenie_list(list1, list2)
+print("Resulting list:", result)
+
+punkt 25
+
+import random
+
+def random_list(input_list):
+    return random.choice(input_list)
+
+my_list = [1, 2, 3, 4, 5]
+random_item = random_list(my_list)
+print("Randomly selected item:", random_item)
+
+
+punkt 27
+
+def druga_najmniejsza(numbers):
+    if len(numbers) < 2:
+        return "List must contain at least two elements"
+
+    smallest = min(numbers)
+    numbers.remove(smallest)
+    druga_najmniejsza = min(numbers)
+    
+    return druga_najmniejsza
+
+my_list = [4, 1, 3, 5, 2]
+result = druga_najmniejsza(my_list)
+print("Second smallest number:", result)
+
+
+punkt 28
+
+def druga_naj(numbers):
+    if len(numbers) < 2:
+        return "List must contain at least two elements"
+    
+    largest = max(numbers)
+    numbers.remove(largest)
+    druga_naj = max(numbers)
+    
+    return druga_naj
+
+my_list = [4, 1, 3, 5, 2]
+result = druga_naj(my_list)
+print("Second largest number:", result)
+
+punkt 30
+
+def licznik_z_listy(input_list):
+    frequency = {}
+    for element in input_list:
+        if element in frequency:
+            frequency[element] += 1
+        else:
+            frequency[element] = 1
+    return frequency
+
+my_list = [1, 2, 2, 3, 5, 3, 4, 4, 4, 4]
+result = licznik_z_listy(my_list)
+print("Frequency of elements:", result)
+
+
+punkt 37
+
+def najpopularniejsza(list1, list2):
+    set1 = set(list1)
+    set2 = set(list2)
+    common = set1.intersection(set2)
+    return list(common)
+
+list1 = [1, 2, 3, 4, 5]
+list2 = [3, 4, 5, 6, 7]
+result = najpopularniejsza(list1, list2)
+print("Common items:", result)
+
+
+punkt 46
+
+def nieparzysta(input_list):
+    return [item for item in input_list if item % 2 != 0]
+
+my_list = [1, 2, 3, 4, 5, 6, 7, 8, 9]
+result = nieparzysta(my_list)
+print("Odd items:", result)
+
+
+punkt 51
+
+def co_ktory(input_list, n):
+    return [input_list[i:i+n] for i in range(0, len(input_list), n)]
+
+my_list = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
+n = 4
+result = co_ktory(my_list, n)
+print("Split list every {}th element:".format(n))
+for sublist in result:
+    print(sublist)
+
+
+punkt 63
+
+def lista_cyfra(input_list, string):
+    return [string + str(item) for item in input_list]
+
+my_list = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9]
+string_to_insert = 'cyfra_'
+result = lista_cyfra(my_list, string_to_insert)
+print("List :")
+print(result)
+
+
+punkt 70
+
+def sortowanie_po_literze(input_list, char):
+    return [item for item in input_list if item.startswith(char)]
+
+original_list = ['abcd', 'abc', 'bcd', 'bkie', 'cder', 'cdsw', 'sdfsd', 'dagfa', 'acjd']
+specific_char = 'd'
+result = sortowanie_po_literze(original_list, specific_char)
+print("Items starting with '{}':".format(specific_char))
+print(result)
+
+
+punkt 73
+
+def duplikaty(input_list):
+    result = []
+    for i, item in enumerate(input_list):
+        if i == 0 or item != input_list[i - 1]:
+            result.append(item)
+    return result
+
+given_list = [1, 2, 2, 3, 3, 3, 4, 5, 5, 6, 6, 6, 6, 7, 8, 8, 8, 9, 0,]
+result = duplikaty(given_list)
+print("List with consecutive duplicates removed:")
+print(result)
+
+
+punkt 74
+
+def pakowanie_duplikatow(input_list):
+    result = []
+    current_sublist = []
+    for item in input_list:
+        if not current_sublist or item == current_sublist[-1]:
+            current_sublist.append(item)
+        else:
+            result.append(current_sublist)
+            current_sublist = [item]
+    result.append(current_sublist)
+    return result
+
+given_list = [1, 2, 2, 3, 3, 3, 4, 5, 5, 6, 6, 6, 6, 7, 8, 8, 8, 9, 0,]
+result = pakowanie_duplikatow(given_list)
+print("Packed consecutive duplicates into sublists:")
+print(result)
+
+
+punkt 79
+
+def usun_K(input_list, k):
+    if k < 0 or k >= len(input_list):
+        print("Invalid index")
+        return input_list
+    else:
+        updated_list = input_list[:k] + input_list[k+1:]
+        return updated_list
+
+given_list = [1, 2, 2, 3, 3, 3, 4, 5, 5, 6, 6, 6, 6, 7, 8, 8, 8, 9, 0,]
+k = 2
+updated_list = usun_K(given_list, k)
+print("Updated list after removing element at index", k, ":")
+print(updated_list)
+
+
+punkt 130
+
+def troj_para(list1, list2, list3):
+    pair_counts = {}
+    for a, b, c in zip(list1, list2, list3):
+        pair = (a, b, c)
+        if pair in pair_counts:
+            pair_counts[pair] += 1
+        else:
+            pair_counts[pair] = 1
+    return pair_counts
+
+list1 = [1, 2, 3, 4, 5, 6, 7, 8]
+list2 = [2, 2, 3, 1, 2, 6, 7, 9]
+list3 = [2, 1, 3, 1, 2, 6, 7, 9]
+
+pair_counts = troj_para(list1, list2, list3)
+
+print("Counts of same pairs:")
+for pair, count in pair_counts.items():
+    print(pair, ":", count)
+
+
+punkt 147
+
+import random
+
+def losowe_laczenie(list1, list2):
+    random.shuffle(list1)
+    combined_list = [item for pair in zip(list1, list2) for item in pair]
+    combined_list.extend(list1[len(list2):] if len(list1) > len(list2) else list2[len(list1):])
+    return combined_list
+
+list1 = [1, 2, 3, 4, 5]
+list2 = ['a', 'b', 'c', 'd', 'e', 'f', 'g']
+
+combined_list = losowe_laczenie(list1, list2)
+print("Combined list randomly:")
+print(combined_list)
+
+punkt 168
+
+def pionowo(input_list):
+    for item in input_list:
+        if isinstance(item, list):  
+            pionowo(item)  
+        else:
+            print(item)
+
+given_list = [1, [2, 3, [4, 5]], 6, [7, 8], 9]
+print("Elements displayed vertically:")
+pionowo(given_list)
+ 

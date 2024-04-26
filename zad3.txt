@@ -1,0 +1,266 @@
+Zadanie 3
+
+punkt 10
+
+def sum_dictionary_values(dictionary):
+    return sum(dictionary.values())
+
+my_dict = {'a': 10, 'b': 20, 'c': 30}
+total_sum = sum_dictionary_values(my_dict)
+print("Sum of all items in the dictionary:", total_sum)
+
+
+punkt 11
+
+def multiply_dictionary_values(dictionary):
+    result = 1
+    for value in dictionary.values():
+        result *= value
+    return result
+
+my_dict = {'a': 10, 'b': 20, 'c': 30}
+total_product = multiply_dictionary_values(my_dict)
+print("Product of all items in the dictionary:", total_product)
+
+
+punkt 12
+
+def remove_key(dictionary, key):
+    if key in dictionary:
+        del dictionary[key]
+        print("Key '{}' removed from the dictionary.".format(key))
+    else:
+        print("Key '{}' not found in the dictionary.".format(key))
+
+my_dict = {'a': 1, 'b': 2, 'c': 3}
+remove_key(my_dict, 'c')
+print("Updated dictionary:", my_dict)
+
+
+punkt 14
+
+def sort_dictionary_by_key(dictionary):
+    sorted_dict = {key: dictionary[key] for key in sorted(dictionary)}
+    return sorted_dict
+
+my_dict = {'b': 3, 'a': 2, 'c': 8}
+sorted_dict = sort_dictionary_by_key(my_dict)
+print("Sorted dictionary by key:")
+print(sorted_dict)
+
+punkt 15
+
+def min_max(dictionary):
+    if not dictionary:
+        return None, None
+    max_value = max(dictionary.values())
+    min_value = min(dictionary.values())
+    return max_value, min_value
+
+my_dict = {'a': 10, 'b': 20, 'c': 55, 'd': 115}
+max_value, min_value = min_max(my_dict)
+print("Maximum value:", max_value)
+print("Minimum value:", min_value)
+
+
+punkt 17
+
+def duplikaty(dictionary):
+    unique_dict = {}
+    for key, value in dictionary.items():
+        if value not in unique_dict.values():
+            unique_dict[key] = value
+    return unique_dict
+
+my_dict = {'a': 1, 'b': 2, 'c': 1, 'd': 23, 'e': 2}
+unique_dict = duplikaty(my_dict)
+print("Dictionary with duplicates removed:")
+print(unique_dict)
+
+
+punkt 18
+
+def is_dict_empty(dictionary):
+    return not bool(dictionary)
+
+my_dict1 = {}
+my_dict2 = {'a': 1, 'b': 2}
+
+print("Is my_dict1 empty?", is_dict_empty(my_dict1))
+print("Is my_dict2 empty?", is_dict_empty(my_dict2))
+
+
+punkt 22
+
+def highest_3_values(dictionary):
+    sorted_items = sorted(dictionary.items(), key=lambda x: x[1], reverse=True)
+    highest_3 = sorted_items[:3]
+    return highest_3
+
+my_dict = {'a': 10, 'b': 30, 'c': 20, 'd': 40, 'e': 15, 'f': 5, 'g': 14, 'h': 135, 'i': 115}
+highest_3 = highest_3_values(my_dict)
+print("Highest 3 values of corresponding keys:")
+for key, value in highest_3:
+    print("Key:", key, "- Value:", value)
+
+
+punkt 28
+
+def sort_list_alphabetically_in_dict(dictionary):
+    sorted_dict = {key: sorted(value) for key, value in dictionary.items()}
+    return sorted_dict
+
+my_dict = {'a': ['banan', 'jabko', 'mandarynka'],
+           'b': ['wino', 'wodka', 'piwo'],
+           'c': ['ziemniaki', 'papryka', 'pomidory']}
+
+sorted_dict = sort_list_alphabetically_in_dict(my_dict)
+
+print("Sorted dictionary with lists sorted alphabetically:")
+for key, value in sorted_dict.items():
+    print(key, ":", value)
+
+punkt 29
+
+def remove_spaces_from_keys(dictionary):
+    new_dict = {}
+    for key, value in dictionary.items():
+        new_key = key.replace(" ", "")
+        new_dict[new_key] = value
+    return new_dict
+
+my_dict = {'a    b': 1, 'b   c': 2, 'c  d': 3}
+new_dict = remove_spaces_from_keys(my_dict)
+print("Dictionary with spaces removed from keys:")
+print(new_dict)
+
+
+punkt 32
+
+def print_dictionary_line_by_line(dictionary):
+    for key, value in dictionary.items():
+        print(key, ":", value)
+
+my_dict = {'c': 1, 'g': 2, 'h': 3}
+print("Dictionary printed line by line:")
+print_dictionary_line_by_line(my_dict)
+
+
+punkt 34
+
+def count_list_items_in_dict(dictionary):
+    count = 0
+    for value in dictionary.values():
+        if isinstance(value, list):
+            count += len(value)
+    return count
+
+my_dict = {'a': [1, 2, 3], 'b': 4, 'c': [5, 6], 'd': 'not a list'}
+list_item_count = count_list_items_in_dict(my_dict)
+print("Number of items in dictionary values that are lists:", list_item_count)
+
+
+punkt 37
+
+def replace_with_sums(dictionary):
+    for key, value in dictionary.items():
+        if hasattr(value, '__iter__') and not isinstance(value, str):
+            dictionary[key] = sum(value)
+    return dictionary
+
+my_dict = {'a': [1, 2, 3], 'b': (4, 5), 'c': 6}
+updated_dict = replace_with_sums(my_dict)
+print("Dictionary with values replaced by their sums:")
+print(updated_dict)
+
+
+punkt 53
+
+def dictionary_length(dictionary):
+    return len(dictionary)
+
+my_dict = {'a': 2, 'b': 4, 'c': 6}
+length = dictionary_length(my_dict)
+print("Length of the dictionary of values:", length)
+
+
+punkt 54
+
+def dictionary_depth(dictionary):
+    if not isinstance(dictionary, dict):
+        return 0
+    if not dictionary:
+        return 1
+    return 1 + max(dictionary_depth(value) for value in dictionary.values())
+
+my_dict = {'a': {'b': {'c': 1}}}
+depth = dictionary_depth(my_dict)
+print("Depth of the dictionary:", depth)
+
+
+punkt 59
+
+def find_max_values(dictionary, n):
+    sorted_items = sorted(dictionary.items(), key=lambda x: x[1], reverse=True)
+    max_values = sorted_items[:n]
+    return max_values
+
+original_dict = {'a': 5, 'b': 14, 'c': 32, 'd': 35, 'e': 24, 'f': 100, 'g': 57, 'h': 8, 'i': 100}
+number_of_max_values = 3
+
+max_values = find_max_values(original_dict, number_of_max_values)
+print("Specified number of maximum values in the dictionary:")
+for key, value in max_values:
+    print("Key:", key, "- Value:", value)
+
+
+punkt 67
+
+def invert_dictionary(dictionary):
+    inverted_dict = {}
+    for key, value in dictionary.items():
+        if value not in inverted_dict:
+            inverted_dict[value] = [key]
+        else:
+            inverted_dict[value].append(key)
+    return inverted_dict
+
+original_dict = {'a': 5, 'b': 2, 'c': 5, 'd': 9, 'e': 2}
+inverted_dict = invert_dictionary(original_dict)
+print("Inverted dictionary:")
+for key, value in inverted_dict.items():
+    print("Key:", key, "- Values:", value)
+
+
+punkt 72
+
+def invert_dictionary(dictionary):
+    inverted_dict = {value: key for key, value in dictionary.items()}
+    return inverted_dict
+
+original_dict = {10: 'Theodore', 11: 'Mathew', 9: 'Roxanne'}
+inverted_dict = invert_dictionary(original_dict)
+print("Inverted dictionary:")
+print(inverted_dict)
+
+
+punkt 79
+
+def flatten_dictionary_values(dictionary):
+    return list(dictionary.values())
+
+original_dict = {'Theodore': 19, 'Roxanne': 20, 'Mathew': 21, 'Betty': 20}
+flat_list = flatten_dictionary_values(original_dict)
+print("Flat list of all values in the dictionary:")
+print(flat_list)
+
+
+punkt 80
+
+def key_of_max_value(dictionary):
+    return max(dictionary, key=dictionary.get)
+
+original_dict = {'Theodore': 19, 'Roxanne': 22, 'Mathew': 21, 'Betty': 20}
+max_key = key_of_max_value(original_dict)
+print("Key corresponding to the maximum value:", max_key)
+

@@ -1,0 +1,308 @@
+Zadanie 4
+
+punkt 4
+
+stars = [1, 1, 4, 4, 12, 18, 4, 2, 1]
+
+for count in stars:
+    print('* ' * count)
+
+
+punkt 17
+
+def print_pattern_A():
+    print("  ***  ")
+    print(" *   * ")
+    print(" *   * ")
+    print(" ***** ")
+    print(" *   * ")
+    print(" *   * ")
+    print(" *   * ")
+
+print("Pattern 'A':")
+print_pattern_A()
+
+
+punkt 18
+
+def print_pattern_D():
+    print(" **** ")
+    print(" *   *")
+    print(" *   *")
+    print(" *   *")
+    print(" *   *")
+    print(" *   *")
+    print(" **** ")
+
+print("Pattern 'D':")
+print_pattern_D()
+
+
+punkt 19
+ 
+def print_pattern_E():
+    print(" ***** ")
+    print(" *")
+    print(" *")
+    print(" **** ")
+    print(" *")
+    print(" *")
+    print(" ***** ")
+
+print("Pattern 'E':")
+print_pattern_E()
+
+
+punkt 20
+
+def print_pattern_G():
+    print("  **** ")
+    print(" *     ")
+    print(" *     ")
+    print(" * *** ")
+    print(" *   * ")
+    print(" *   * ")
+    print("  ***  ")
+
+print("Pattern 'G':")
+print_pattern_G()
+
+punkt 21
+
+def print_pattern_L():
+    print(" *      ")
+    print(" *      ")
+    print(" *      ")
+    print(" *      ")
+    print(" *      ")
+    print(" *      ")
+    print(" *****  ")
+
+print("Pattern 'L':")
+print_pattern_L()
+
+
+punkt 22
+
+def print_pattern_M():
+    print("*     *")
+    print("**   **")
+    print("* * * *")
+    print("*  *  *")
+    print("*     *")
+    print("*     *")
+    print("*     *")
+
+print("Pattern 'M':")
+print_pattern_M()
+
+
+punkt 23
+
+def print_pattern_O():
+    print("  ***  ")
+    print(" *   * ")
+    print("*     *")
+    print("*     *")
+    print("*     *")
+    print(" *   * ")
+    print("  ***  ")
+
+print("Pattern 'O':")
+print_pattern_O()
+
+punkt 24
+
+def print_pattern_P():
+    print("***** ")
+    print("*    *")
+    print("*    *")
+    print("***** ")
+    print("*     ")
+    print("*     ")
+    print("*     ")
+
+print("Pattern 'P':")
+print_pattern_P()
+
+
+punkt 25
+
+def print_pattern_R():
+    print("***** ")
+    print("*    *")
+    print("*    *")
+    print("***** ")
+    print("* *   ")
+    print("*   * ")
+    print("*    *")
+
+print("Pattern 'R':")
+print_pattern_R()
+
+punkt 27
+
+def print_pattern_T():
+    print("*****")
+    print("  *  ")
+    print("  *  ")
+    print("  *  ")
+    print("  *  ")
+    print("  *  ")
+
+print("Pattern 'T':")
+print_pattern_T()
+
+
+punkt 28
+
+def print_pattern_U():
+    print("*    *")
+    print("*    *")
+    print("*    *")
+    print("*    *")
+    print("*    *")
+    print(" ***** ")
+
+print("Pattern 'U':")
+print_pattern_U()
+
+
+punkt 29
+
+def print_pattern_X():
+    print("*     *")
+    print(" *   * ")
+    print("  * *  ")
+    print("   *   ")
+    print("  * *  ")
+    print(" *   * ")
+    print("*     *")
+
+print("Pattern 'X':")
+print_pattern_X()
+
+
+punkt 30
+
+def print_pattern_Z():
+    print("*****")
+    print("   * ")
+    print("  *  ")
+    print(" *   ")
+    print("*    ")
+    print("*****")
+
+print("Pattern 'Z':")
+print_pattern_Z()
+
+punkt 44
+
+def print_number_pattern(n):
+    for i in range(1, n + 1):
+        print(str(i) * i)
+
+print("Expected Output:")
+print_number_pattern(9)
+
+
+punkt 15
+
+import re
+
+def sprawdzanie_hasla(password):
+    if len(password) < 6 or len(password) > 16:
+        return False
+    
+    if not re.search("[a-z]", password):
+        return False
+    
+    if not re.search("[A-Z]", password):
+        return False
+    
+    if not re.search("[0-9]", password):
+        return False
+    
+    if not re.search("[$#@]", password):
+        return False
+    
+    return True
+
+password = input("Enter a password: ")
+if sprawdzanie_hasla(password):
+    print("Valid password")
+else:
+    print("Invalid password")
+
+
+punkt 5
+
+def odwrotnosc(word):
+    return word[::-1]
+
+word = input("wpisz slowo: ")
+reversed_word = odwrotnosc(word)
+print("Reversed word:", reversed_word)
+
+
+punkt 6
+
+def count_even_odd(numbers):
+    even_count = 0
+    odd_count = 0
+    for num in numbers:
+        if num % 2 == 0:
+            even_count += 1
+        else:
+            odd_count += 1
+    return even_count, odd_count
+
+numbers = (1, 2, 3, 4, 5, 6, 7, 8, 9)
+even_count, odd_count = count_even_odd(numbers)
+
+print("Number of even numbers:", even_count)
+print("Number of odd numbers:", odd_count)
+
+punkt 1
+
+def find_numbers():
+    numbers = []
+    for num in range(1500, 2701):
+        if num % 7 == 0 and num % 5 == 0:
+            numbers.append(num)
+    return numbers
+
+result = find_numbers()
+
+print("Numbers divisible by 7 and multiples of 5 between 1500 and 2700:")
+print(result)
+
+punkt 26
+
+print("Pattern 1:")
+print(" ****  ")
+print("*     ")
+print("*     ")
+print(" ***  ")
+print("    * ")
+print("    * ")
+print(" **** ")
+
+print("\nPattern 2:")
+print("ooooooooooooooooo ")
+print("ooooooooooooooooo ")
+print("ooooooooooooooooo ")
+print("oooo              ")
+print("oooo              ")
+print("oooo              ")
+print("ooooooooooooooooo ")
+print("ooooooooooooooooo ")
+print("ooooooooooooooooo ")
+print("        oooo      ")
+print("        oooo      ")
+print("        oooo      ")
+print("ooooooooooooooooo ")
+print("ooooooooooooooooo ")
+print("ooooooooooooooooo ")
+
+
